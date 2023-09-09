@@ -129,19 +129,19 @@ FROM sales;
 SELECT MIN(price)
 FROM sales;
 
---which items are greater than the average price?
+--show a statistic about the numbers per category in the data using HAVING.
 SELECT product
 FROM sales
 GROUP BY product
 HAVING price>1740;
 
---how many of each item were sold?
+--show how many of each item were sold.
 SELECT product, 
 COUNT(product) AS 'number_of_products'
 FROM sales 
 GROUP BY product;
 
---which shipments were domestic and which were overseas?
+--show a statistic using CASE.
 SELECT product, country,
     CASE
         WHEN country='United states' THEN "domestic"
@@ -149,3 +149,8 @@ SELECT product, country,
     END as "shipping"
 FROM sales;
 
+--show a statistic using AND/OR
+SELECT *
+FROM sales
+WHERE country="Norway"
+AND city='Oslo';
